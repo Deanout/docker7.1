@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Check if the database exists. If not, create it.
+if [ "$RAILS_ENV" = "development" ]; then
+  echo "Preparing database..."
+  bundle exec rake db:prepare
+fi
+
+# Continue with the normal command (passed as arguments to the script)
+exec "$@"
